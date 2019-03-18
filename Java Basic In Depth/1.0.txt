@@ -1,0 +1,19 @@
+public class HelloHP {
+
+    public static void main(String args[]) {
+      
+      DemoClass demo1=new DemoClass();
+      demo1.print("Hi this is Minhaz Uddin");
+      
+       
+    }
+
+}
+
+public class DemoClass{
+  public void print(String input){
+    System.out.println(input);
+
+  }
+
+}
