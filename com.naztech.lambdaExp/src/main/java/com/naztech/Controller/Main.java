@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//System.out.println(10.0/0.0);
+		System.out.println(10.0/0.0);
 		Calculator add=(Number a,Number b)->{
 			  return a.doubleValue() + b.doubleValue();
 	  };

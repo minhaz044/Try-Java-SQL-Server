@@ -27,16 +27,18 @@ public class LambdaExpTest {
 		  Double result=null;
 		  try {
 			  result= a.doubleValue() / b.doubleValue();
-		  }catch(Exception e){
+			  System.out.println("gfdtfasdgfasd"+result);
+		  }catch(ArithmeticException e){
 			  System.out.println(e);
 		  }finally {
 			  return result;
 		  }
-	  	};		
+	  	};	
+	  	String a="Infinity";
 		assertEquals((int)(add.calculate(10, 20)),30);
 		assertEquals((int)(sub.calculate(10, 20)),-10);
 		assertEquals((int)(mul.calculate(10, 20)),200);
-		//assertEquals((div.calculate(10, 0)),"");
+		assertEquals((div.calculate(10, 0)),"Infinity" );
 	}
 
 }
