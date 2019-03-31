@@ -11808,3 +11808,67 @@ java.util.concurrent.TimeoutException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:133)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:169)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-03-31 15:59:46.657
+!MESSAGE No repository found at file:/C:/Apps/Sencha/Cmd/6.5.3.6/bin/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-03-31 16:00:48.785
+!MESSAGE No repository found at file:/C:/Apps/Sencha/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-03-31 16:02:33.765
+!MESSAGE No repository found at file:/C:/Apps/Sencha/Cmd/6.5.3.6/plugins/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-03-31 16:02:33.783
+!MESSAGE No repository found at file:/C:/Apps/Sencha/Cmd/.
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.220
+!MESSAGE Preparing classpath changed notification LambdaAndSlf4J
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.220
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.220
+!MESSAGE executing callback sts4.classpath.KeDfYXXS LambdaAndSlf4J true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.314
+!MESSAGE executing callback sts4.classpath.KeDfYXXS SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.330
+!MESSAGE Preparing classpath changed notification LombokAndSlf4Jbyminhaz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.330
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.345
+!MESSAGE classpath=22 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:39.345
+!MESSAGE executing callback sts4.classpath.KeDfYXXS LombokAndSlf4Jbyminhaz false 22
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:40.260
+!MESSAGE executing callback sts4.classpath.KeDfYXXS SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:49.268
+!MESSAGE Preparing classpath changed notification LombokAndSlf4Jbyminhaz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:49.284
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:49.284
+!MESSAGE classpath=28 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:49.300
+!MESSAGE executing callback sts4.classpath.KeDfYXXS LombokAndSlf4Jbyminhaz false 28
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-03-31 16:03:51.315
+!MESSAGE executing callback sts4.classpath.KeDfYXXS FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2019-03-31 16:03:51.331
+!MESSAGE 
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1771)
+	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1915)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:37)
+	at org.springframework.tooling.jdt.ls.commons.classpath.ReusableClasspathListenerHandler$Subscriptions$2.run(ReusableClasspathListenerHandler.java:179)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
