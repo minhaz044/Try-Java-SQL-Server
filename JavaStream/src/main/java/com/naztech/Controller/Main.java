@@ -3,10 +3,10 @@ package com.naztech.Controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import com.naztch.Services.Person;
 import com.naztech.Dao.Gender;
-import com.naztech.Dao.hello;
 
 public class Main {
 
@@ -61,6 +61,9 @@ public class Main {
 		p.stream().filter(i-> ((Integer.parseInt(i.getSalary())>30000)&& i.getGender()==Gender.Female)).forEach(s->System.out.println(s));
 		System.out.println("This is Our Employee list with salary less then 30000 And Who is Male ");		
 		p.stream().filter(i-> ((Integer.parseInt(i.getSalary())>30000)&& i.getGender()==Gender.Male)).forEach(s->System.out.println(s));
+		String s1="Hello";
+		Optional<String> ss1=Optional.ofNullable(s1);
+		System.out.println(ss1);
 		
 		
 		
