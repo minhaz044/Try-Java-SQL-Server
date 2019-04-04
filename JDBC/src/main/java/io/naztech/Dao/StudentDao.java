@@ -2,15 +2,16 @@ package io.naztech.Dao;
 
 import io.naztech.Services.Student;
 
-
 public interface StudentDao {
-	Student  insert(Student s) ;
-	default Student delete(Student s) {
-		
+	Student  insert() ;
+	default Student delete() {
+	System.out.println("Warning : Delete Is Not Implemented");
 		
 		return null;
 	}
-	default Student update(Student s) {
+	default Student update() {
+		System.out.println("Warning : Delete Is Not Implemented");
+		
 		return null;
 	}
 
