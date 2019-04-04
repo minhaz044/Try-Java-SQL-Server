@@ -67,6 +67,39 @@ public class Student implements StudentDao{
 			return null;
 		}
 		return this;	
-	}	
+	}
+	
+	@Override
+	public Boolean delete() {
+		try {
+			String insertionQuery="DELETE FROM student_m044 WHERE id="+this.id+"";
+			Connection con=DBCon.getConnection();
+			Statement statement =con.createStatement();
+			int result=statement.executeUpdate(insertionQuery);
+			if(result==1) {
+				this.id=null;
+				this.name=null;
+				this.updated_at=null;
+				this.created_at=null;
+				return true;
+				
+			}else return false;
+			
+
+		}catch(Exception e) {
+			log.error("Insertion Failed:"+ e);
+			return false;
+		}
+			
+	}		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

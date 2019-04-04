@@ -4,7 +4,7 @@ import io.naztech.Services.Student;
 
 public interface StudentDao {
 	Student  insert() ;
-	default Student delete() {
+	default Boolean delete() {
 	System.out.println("Warning : Delete Is Not Implemented");
 		
 		return null;
