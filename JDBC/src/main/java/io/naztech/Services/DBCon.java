@@ -28,41 +28,9 @@ public class DBCon {
 		}else {
 			return connection;
 		}
+		
 
         
 	}
-
-
-	
-	
-	
-	
-	
-	
-	
 	
 }
-/*
- * public DBCon() { if(this.connection==null) { this.connection=getConnection();
- * }
- * 
- * }
- */
-/*	public Boolean close() {
-	if(this.connection!=null) {
-		try {
-			this.connection.close();
-			return true;
-		}catch(Exception e) {
-			return false;
-		}
-		
-	
-	}else return true;
-	 
-
-
-
-
-}
-*/

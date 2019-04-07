@@ -14,6 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @Slf4j
 public class Student implements StudentDao{
+	private static Connection connection=null;
+	static {
+		connection=DBCon.getConnection();
+	}
 	private Integer id=null;
 	@Getter @Setter String name=null;
 	@Getter @Setter String created_at=null;
@@ -23,12 +27,12 @@ public class Student implements StudentDao{
 	
 		
 	}
-	@Override
-	public Student insert() {
+	public Student Search(Integer id)  {
+
 		try {
-			String insertionQuery="insert into student_m044(name,created_at,updated_at) output inserted.id,inserted.name,inserted.created_at,inserted.updated_at values ('"+this.name+"',GETDATE(),"+this.updated_at+")";
-			Connection con=DBCon.getConnection();
-			Statement statement =con.createStatement();
+			String insertionQuery="Select * from student_m044 where id="+id;
+			//Connection con=DBCon.getConnection();
+			Statement statement =connection.createStatement();
 
 			ResultSet result=statement.executeQuery(insertionQuery);
 			 while(result.next()) 
@@ -41,7 +45,60 @@ public class Student implements StudentDao{
 			
 
 		}catch(Exception e) {
-			log.error("Insertion Failed:"+ e);
+			log.error("Search Failed:"+ e);
+			return null;
+		}
+			
+		return null;
+	}
+	public Student Search()  {
+		if(this.id==null) {
+		
+			log.error("Invalid Sudent Id:Please Insert  a Student Id Before Search");
+			return null;
+		}
+		try {
+			String insertionQuery="Select * from student_m044 where id="+ this.id;
+			//Connection con=DBCon.getConnection();
+			Statement statement =connection.createStatement();
+
+			ResultSet result=statement.executeQuery(insertionQuery);
+			 while(result.next()) 
+			 { 
+				this.id=Integer.parseInt(result.getString("id"));
+				this.name=result.getString("name");
+				this.created_at=result.getString("created_at");
+				this.updated_at=result.getString("updated_at");
+			}
+			
+
+		}catch(Exception e) {
+			log.error("Search Failed:"+ e);
+			return null;
+		}
+			
+		return null;
+	}
+
+	@Override
+	public Student insert() {
+		try {
+			String insertionQuery="insert into student_m044(name,created_at,updated_at) output inserted.id,inserted.name,inserted.created_at,inserted.updated_at values ('"+this.name+"',GETDATE(),"+this.updated_at+")";
+			//Connection con=DBCon.getConnection();
+			Statement statement =connection.createStatement();
+
+			ResultSet result=statement.executeQuery(insertionQuery);
+			 while(result.next()) 
+			 { 
+				this.id=Integer.parseInt(result.getString("id"));
+				this.name=result.getString("name");
+				this.created_at=result.getString("created_at");
+				this.updated_at=result.getString("updated_at");
+			}
+			
+
+		}catch(Exception e) {
+			log.error("Insertion  Failed:"+ e);
 			return null;
 		}
 		return this;	
@@ -52,8 +109,8 @@ public class Student implements StudentDao{
 	public Student update() {
 		try {
 			String insertionQuery="update student_m044 Set name='"+this.name+"',updated_at=GETDATE() output inserted.id,inserted.name,inserted.created_at,inserted.updated_at  where id="+this.id+"";
-			Connection con=DBCon.getConnection();
-			Statement statement =con.createStatement();
+			//Connection con=DBCon.getConnection();
+			Statement statement =connection.createStatement();
 			ResultSet result=statement.executeQuery(insertionQuery);
 			 while(result.next()) 
 			 { 
@@ -63,7 +120,7 @@ public class Student implements StudentDao{
 				this.updated_at=result.getString("updated_at");
 			}
 		}catch(Exception e) {
-			log.error("Insertion Failed:"+ e);
+			log.error("update Failed:"+ e);
 			return null;
 		}
 		return this;	
@@ -73,8 +130,8 @@ public class Student implements StudentDao{
 	public Boolean delete() {
 		try {
 			String insertionQuery="DELETE FROM student_m044 WHERE id="+this.id+"";
-			Connection con=DBCon.getConnection();
-			Statement statement =con.createStatement();
+			//Connection con=DBCon.getConnection();
+			Statement statement =connection.createStatement();
 			int result=statement.executeUpdate(insertionQuery);
 			if(result==1) {
 				this.id=null;
@@ -87,7 +144,7 @@ public class Student implements StudentDao{
 			
 
 		}catch(Exception e) {
-			log.error("Insertion Failed:"+ e);
+			log.error("delete Failed:"+ e);
 			return false;
 		}
 			
