@@ -8737,3 +8737,29 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-04-10 10:43:52.481
 !MESSAGE No repository found at file:/C:/Apps/Sencha/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-04-10 10:45:58.544
+!MESSAGE No repository found at file:/C:/Apps/Sencha/Cmd/6.5.3.6/plugins/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2019-04-10 10:45:58.581
+!MESSAGE No repository found at file:/C:/Apps/Sencha/Cmd/.
+
+!ENTRY org.eclipse.egit.core 4 0 2019-04-10 10:46:23.243
+!MESSAGE An exception occurred during push on URI https://github.com/minhaz044/Try-Java: https://github.com/minhaz044/Try-Java: not authorized
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/minhaz044/Try-Java: not authorized
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:180)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/minhaz044/Try-Java: not authorized
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:544)
+	at org.eclipse.jgit.transport.TransportHttp.openPush(TransportHttp.java:439)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:160)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1346)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:170)
+	... 4 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2019-04-10 10:46:23.259
+!MESSAGE Can't connect to any repository: https://github.com/minhaz044/Try-Java (https://github.com/minhaz044/Try-Java: not authorized)
