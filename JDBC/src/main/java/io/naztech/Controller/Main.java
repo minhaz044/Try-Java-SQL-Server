@@ -8,7 +8,16 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("-------------------------------------Result Section-------------------------------------");
 		Student s=new Student("Hello Uddin delete");
+		
+		
+		
 		s.insert();
+		Student  obj=Student.Search(s.getId());
+		System.out.println(s);
+		System.out.println(obj);
+		
+		s.equals(obj);
+
 		System.out.println(s.toString());
 		s.setName("I am Minhaz 102");
 		s.update();

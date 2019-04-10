@@ -1,4 +1,4 @@
-package io.naztech.JDBC;
+package io.naztech.io.naztech.FunctionalInterface;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -17,8 +17,6 @@ public class AppTest
      */
     public AppTest( String testName )
     {
-        
-
         super( testName );
     }
 
@@ -27,8 +25,6 @@ public class AppTest
      */
     public static Test suite()
     {
-        System.out.println("Hello Test");
-
         return new TestSuite( AppTest.class );
     }
 
@@ -38,6 +34,5 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
-        System.out.println("Hello Test");
     }
 }
