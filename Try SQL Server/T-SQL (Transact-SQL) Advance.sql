@@ -301,15 +301,18 @@ IF (CURSOR_STATUS('LOCAL','Pointer') >=-1)
 DEALLOCATE Pointer
 GO
 BEGIN
-DECLARE @counter int
+SET NOCOUNT ON 
+DECLARE @counter int,@id  int,@name VARCHAR(255),@pass VARCHAR(255) 
 DECLARE Pointer CURSOR LOCAL SCROLL FOR
-	SELECT * 
+	SELECT id,userName,password
 	FROM users  
 OPEN Pointer 
 FETCH FIRST FROM Pointer --1St Data 
 FETCH LAST FROM Pointer --LAst Data 
 FETCH PRIOR FROM Pointer --Next From Last Execution
-FETCH NEXT FROM Pointer --Previous From Last Execution
+FETCH NEXT FROM Pointer
+INTO @id, @name, @pass--Previous From Last Execution
+Print 'ID : '+ CAST(@id AS VARCHAR(255))+' Name: ' + CAST(@name AS VARCHAR(255))+' Password: '+ CAST(@pass AS VARCHAR(255))
 CLOSE Pointer 
 DEALLOCATE Pointer
 END
@@ -338,9 +341,172 @@ END
 
 --===========================Function In SQL Server=================== 
 
+IF OBJECT_ID('fSquare') is not null
+BEGIN
+DROP FUNCTION  fSquare
+END
+GO
+CREATE FUNCTION fSquare(@number int)
+RETURNS int
+AS
+BEGIN
+RETURN @number*@number
+END
+
+
+--=======================CAll A function ==========
+SELECT dbo.fSquare(50) as SQUARE
 
 
 
+
+
+--=======================Dummy Code=====================
+CREATE TABLE Account(
+id int identity(1,1) primary key not null,
+amount float,
+created_at datetime default GETDATE(),
+updated_at datetime default GETDATE()
+)
+drop table Account
+insert into Account(amount) VALUES (25000.0),(25000.0)
+SELECT * FROM Account
+
+
+CREATE TABLE TransactionInfo(
+id int identity (1,1) primary key not null,
+userId int foreign key references Account(id),
+tDate datetime default Current_timestamp,
+tType varchar(255),
+tBranch Varchar(255),
+tAmount float
+);
+SELECT * FROM Account 
+
+SELECT * FROM TransactionInfo
+
+
+delete from TransactionInfo where id>0
+
+
+
+
+==================================================================
+--============================TRANSACTION IN SQL (IMPORTANT)==================
+==============================IMPORTANT=====================================
+
+
+--==============With Out Transaction =====================
+IF OBJECT_ID('spAccountTransfer','P') is not null
+BEGIN
+DROP PROC spAccountTransfer
+END
+GO 
+CREATE PROC spAccountTransfer
+@sender int,
+@reciver int,
+@amount float
+AS
+BEGIN
+IF((SELECT count(*) FROM Account WHERE id=@sender AND amount>=@amount)=1 AND (SELECT count(*) FROM Account WHERE id=@reciver)=1)
+BEGIN
+UPDATE Account 
+SET Account.amount=Account.amount-@amount
+WHERE id=@sender 
+
+PRINT 2/0
+
+UPDATE Account 
+SET Account.amount=Account.amount+@amount
+WHERE id=@reciver 
+END
+ELSE
+BEGIN
+PRINT ' INVALID TRANSACTION '
+END
+END
+
+
+--====================== Declaring and using transactions==============
+1.Began
+	--begin tran
+2.Finish 
+	--Commit
+3.RollBack
+	--RollBack
+
+--====================Demo Transaction =============
+
+PRINT @@TRANCOUNT  
+--  The BEGIN TRAN statement will increment the  
+--  transaction count by 1.  
+BEGIN TRAN  
+    PRINT @@TRANCOUNT  
+    BEGIN TRAN  
+        PRINT @@TRANCOUNT  
+--  The COMMIT statement will decrement the transaction count by 1.  
+    COMMIT  
+    PRINT @@TRANCOUNT  
+COMMIT  
+PRINT @@TRANCOUNT  
+===========================================================================
+--=============================Transaction Handeling======================
+
+
+IF OBJECT_ID('spAccountTransfer','P') is not null
+BEGIN
+DROP PROC spAccountTransfer
+END
+GO 
+CREATE PROC spAccountTransfer
+@sender int,
+@reciver int,
+@amount float,
+@branch varchar(255),
+@Type varchar(255)
+AS
+BEGIN
+IF((SELECT count(*) FROM Account WHERE id=@sender AND amount>=@amount)=1 AND (SELECT count(*) FROM Account WHERE id=@reciver)=1)
+BEGIN
+PRINT '@@TranCount :'+CAST(@@trancount AS VARCHAR(5));
+PRINT 'TRANSACTION BEGAN';
+BEGIN TRAN
+BEGIN TRY
+UPDATE Account 
+SET Account.amount=Account.amount-@amount
+WHERE id=@sender;
+INSERT INTO TransactionInfo(userId,tDate,tType,tBranch,tAmount)
+VALUES(@sender,GETDATE(),@Type,@branch,0-@amount);
+UPDATE Account 
+SET Account.amount=Account.amount+@amount
+WHERE id=@reciver;
+INSERT INTO TransactionInfo(userId,tDate,tType,tBranch,tAmount)
+VALUES(@reciver,GETDATE(),@Type,@branch,@amount);
+IF(@@TRANCOUNT >0)
+BEGIN
+	COMMIT TRAN
+	PRINT 'Transaction Comited'
+END
+END TRY
+BEGIN CATCH
+PRINT 'ERROR :'+CAST(ERROR_MESSAGE() AS VARCHAR(255))
+IF(@@TRANCOUNT >0)
+BEGIN
+	ROLLBACK TRAN
+	PRINT 'ROLLBACKED'
+END
+END CATCH
+END
+ELSE
+BEGIN
+PRINT ' INVALID TRANSACTION '
+END
+END
+
+
+
+
+--===============================================================
 
 
  --==========================EXECUTE PROCEDURE=================
@@ -355,3 +521,9 @@ EXEC spusers_GetByID @userId=3
 EXEC spusers_DeleteByID @userId=2
 
 EXEC spExceptionHandeling 100
+
+EXEC spAccountTransfer 1,2,25000
+
+EXEC spAccountTransfer @sender=2 ,@reciver=1 ,@amount=1500.73 ,@branch='Feni',@Type='SR'
+
+
