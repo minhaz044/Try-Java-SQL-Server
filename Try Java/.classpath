@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Collection/src"/>
+	<classpathentry kind="src" path="Collections/src"/>
+	<classpathentry kind="src" path="collectionT/src"/>
+	<classpathentry kind="src" path="com.naztech.copyObject/src/main/java"/>
+	<classpathentry kind="src" path="com.naztech.Enum/src/main/java"/>
+	<classpathentry kind="src" path="com.naztech.fileSystem/src/main/java"/>
+	<classpathentry kind="src" path="com.naztech.innerClass"/>
+	<classpathentry kind="src" path="com.naztech.lambdaExp/src/main/java"/>
+	<classpathentry kind="src" path="com.naztech.lambdaExp/src/test/java"/>
+	<classpathentry kind="src" path="com.naztech.LambdaInDepth/src/main/java"/>
+	<classpathentry kind="src" path="com.naztech.Map/src/main/java"/>
+	<classpathentry kind="src" path="com.naztech.serializationAndInnerClass/src/main/java"/>
+	<classpathentry kind="src" path="demo/.mvn/wrapper"/>
+	<classpathentry kind="src" path="demo/src/main/java"/>
+	<classpathentry kind="src" path="demo/src/test/java"/>
+	<classpathentry kind="src" path="Encapsulation/src"/>
+	<classpathentry kind="src" path="ExceptionHandeling/src"/>
+	<classpathentry kind="src" path="FileSystem/src"/>
+	<classpathentry kind="src" path="FileSystemInJava/src"/>
+	<classpathentry kind="src" path="First Java Project/src"/>
+	<classpathentry kind="src" path="Inheritance/src"/>
+	<classpathentry kind="src" path="interface/src"/>
+	<classpathentry kind="src" path="io.naztech.FunctionalInterface/src/main/java"/>
+	<classpathentry kind="src" path="io.naztech.FunctionalInterface/src/test/java"/>
+	<classpathentry kind="src" path="Java Basic In Depth/Try &amp; Learn Java/src"/>
+	<classpathentry kind="src" path="JavaCollections/src"/>
+	<classpathentry kind="src" path="JavaStream/src/main/java"/>
+	<classpathentry kind="src" path="JDBC/src/main/java"/>
+	<classpathentry kind="src" path="JDBC/src/test/java"/>
+	<classpathentry kind="src" path="LombokandSlf4j/src/main/java"/>
+	<classpathentry kind="src" path="LombokAndSlf4Jbyminhaz/src/main/java"/>
+	<classpathentry kind="src" path="LombokAndSlf4Jbyminhaz/src/test/java"/>
+	<classpathentry kind="src" path="MethodReference/src/main/java"/>
+	<classpathentry kind="src" path="OOPBasic/src"/>
+	<classpathentry kind="src" path="Polymorphism/src"/>
+	<classpathentry kind="src" path="RegularExpression/src"/>
+	<classpathentry kind="src" path="StringImutation/src"/>
+	<classpathentry kind="src" path="tryLombok/src/main/java"/>
+	<classpathentry kind="src" path="tryLombok/src/test/java"/>
+	<classpathentry kind="src" path="Validation/src"/>
+	<classpathentry kind="output" path="Collection/bin"/>
+</classpath>
